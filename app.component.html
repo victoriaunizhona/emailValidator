@@ -1,0 +1,45 @@
+<!-- main app container -->
+<div class="jumbotron">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 offset-md-3">
+        <h3>Angular 7 Reactive Form</h3>
+        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+          <div class="form-group">
+            <label>Email</label>
+            <input
+              type="text"
+              formControlName="email"
+              class="form-control"
+              [ngClass]="{ 'is-invalid': submitted && f.email.errors }"
+            />
+            <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+              <div *ngIf="f.email.errors.required">Email is required</div>
+              <div *ngIf="f.email.errors.email">
+                Email must be a valid email address
+              </div>
+              <div *ngIf="f.email.errors.mustMatch">
+                Email is already used
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <button class="btn btn-primary">Register</button>
+          </div>
+        </form>
+        <button class="btn btn-secondary" routerLink="/gmailPage">
+          Go to info
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- credits -->
+<div class="text-center">
+  <p>
+    Victoria Unizhona
+  </p>
+</div>
+
+<router-outlet></router-outlet>
